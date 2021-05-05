@@ -3,16 +3,21 @@
     <div
       v-for="moment in moments"
       :key="moment.id">
-        <h1>{{ moment }}</h1>
+        <moment :moment="moment" />
     </div>
   </div>
 </template>
 
 <script>
+import Moment from '../components/Moment.vue'
+
 const axios = require('axios');
 
 export default {
   name: 'MomentList',
+  components: {
+    Moment
+  },
   data() {
     return {
       moments: null,
@@ -31,9 +36,6 @@ export default {
       })
       .catch(function (error) {
         console.log(error);
-      })
-      .then(function () {
-        // always executed
       });
     }
   }
