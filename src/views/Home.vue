@@ -1,18 +1,15 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <moment-list/>
-  </div>
+  <hello-world />
 </template>
 
 <script>
-// @ is an alias to /src
-import MomentList from '../components/MomentList.vue'
+  import HelloWorld from '../components/HelloWorld'
 
-export default {
-  name: 'Home',
-  components: {
-    MomentList
+  export default {
+    name: 'Home',
+
+    components: {
+      HelloWorld,
+    },
   }
-}
 </script>
