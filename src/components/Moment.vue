@@ -4,7 +4,7 @@
       class="mx-auto my-12"
       max-width="690px"
     >
-      <v-row>
+      <v-row class="header">
         <v-list-item three-line>
           <v-list-item-avatar
             tile
@@ -71,16 +71,18 @@ export default {
 
 <style lang="scss">
 .moment {
-  font-family: 'Lato', sans-serif;
+  .header {
+    padding: 7px;
 
-  .moment-title {
-    font-size: 16px;
-    color: #444;
-  }
+    .moment-title {
+      font-size: 16px;
+      color: #444;
+    }
 
-  .moment-author {
-    font-size: 13px;
-    color: #ccc;
+    .moment-author {
+      font-size: 13px;
+      color: #ccc;
+    }
   }
 }
 </style>
