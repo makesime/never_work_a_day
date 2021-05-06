@@ -17,35 +17,20 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-text class="moment-title">
+            <v-list-item-action-text class="moment-title">
               {{ moment.description }}
-            </v-list-item-text>
+            </v-list-item-action-text>
 
             <v-list-item-subtitle class="moment-author">
               {{ momentAuthorWithTime }}
             </v-list-item-subtitle>
           </v-list-item-content>
 
-          <v-card-actions>
-            <div>
-              <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-              </v-btn>
-              <span>{{ moment.emotions.love }}</span>
-            </div>
-            <div>
-              <v-btn icon>
-                <v-icon>mdi-account</v-icon>
-              </v-btn>
-              <span>{{ moment.comments_count }}</span>
-            </div>
-            <div>
-              <v-btn icon>
-                <v-icon>mdi-comment</v-icon>
-              </v-btn>
-              <span>{{ moment.emotions.attendance }}</span>
-            </div>
-          </v-card-actions>
+          <influencer-toolbar
+            :likes="moment.emotions.love"
+            :comments_count="moment.comments_count"
+            :attendance="moment.emotions.attendance"
+           />
         </v-list-item>
       </v-row>
       <v-row>
@@ -63,9 +48,13 @@
 
 <script>
 import moment from 'moment'
+import InfluencerToolbar from '../components/InfluencerToolbar.vue'
 
 export default {
   name: 'Moment',
+  components: {
+    InfluencerToolbar,
+  },
   props: {
     moment: {
       type: Object
