@@ -1,9 +1,23 @@
 <template>
-  <div class="momentList" v-if="moments">
-    <div
-      v-for="moment in moments"
-      :key="moment.id">
-        <moment :moment="moment" />
+  <div class="moment-list">
+    <div class="organization" v-if="organization">
+      <v-avatar
+        tile
+        size="30"
+      >
+        <v-img
+          :src="organization.avatar.thumb"
+        />
+      </v-avatar>
+      <h1>{{ organization.name }}</h1>
+      <h3>{{ organization.description }}</h3>
+    </div>
+    <div v-if="moments">
+      <span
+        v-for="moment in moments"
+        :key="moment.id">
+          <moment :moment="moment" />
+      </span>
     </div>
   </div>
 </template>
@@ -21,10 +35,12 @@ export default {
   data() {
     return {
       moments: null,
+      organization: null,
     }
   },
-  created: function(){
+  created() {
     this.fetchMoments();
+    this.fetchOrganization();
   },
   methods: {
     fetchMoments: function() {
@@ -37,11 +53,26 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+    },
+    fetchOrganization: function() {
+      var self = this;
+
+      axios.get('/organizations/mirego')
+      .then(function (response) {
+        self.organization = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.moment-list {
+  .organization {
+    text-align: center;
+  }
+}
 </style>
