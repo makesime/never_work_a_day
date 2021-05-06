@@ -1,10 +1,17 @@
 <template>
   <v-card-actions class="influencer-toolbar">
     <div class="influencer-icon">
-      <v-btn small icon>
-        <v-icon small>mdi-heart</v-icon>
+      <v-btn
+        small
+        icon
+        v-on:click="handleLikes"
+      >
+        <v-icon
+          small
+          :color="isLiked ? 'pink' : ''"
+        >mdi-heart</v-icon>
       </v-btn>
-      <span>{{ likes }}</span>
+      <span>{{ totalLikes }}</span>
     </div>
     <div class="influencer-icon">
       <v-btn small icon>
@@ -38,6 +45,20 @@ export default {
       required: true
     },
   },
+  data() {
+    return {
+      isLiked: false,
+      totalLikes : this.likes
+    }
+  },
+  computed: {
+  },
+  methods: {
+    handleLikes: function () {
+      this.isLiked = !this.isLiked;
+      this.isLiked ? this.totalLikes += 1 : this.totalLikes -= 1
+    }
+  }
 }
 </script>
 

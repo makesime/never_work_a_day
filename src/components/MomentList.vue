@@ -1,5 +1,6 @@
 <template>
   <div class="moment-list">
+    <v-container>
     <div class="organization" v-if="organization">
       <v-avatar
         class="organization-avatar"
@@ -10,8 +11,8 @@
           :src="organization.avatar.thumb"
         />
       </v-avatar>
-      <div class="text-h3 title">{{ organization.name }}</div>
-      <div class="text-subtitle-1 subtitle">{{ organization.description }}</div>
+      <div class="organization-name">{{ organization.name }}</div>
+      <div class="organization-description">{{ organization.description }}</div>
     </div>
 
     <div v-if="moments">
@@ -21,6 +22,7 @@
           <moment :moment="moment" />
       </span>
     </div>
+    </v-container>
   </div>
 </template>
 
@@ -84,12 +86,14 @@ export default {
       margin-bottom: 15px;
     }
 
-    .subtitle {
+    .organization-description {
       padding: 15px 80px 0 80px;
       color: #a9b3bd;
+      font-size: 18px;
     }
 
-    .title {
+    .organization-name {
+      font-size: 40px;
       font-weight: 900;
     }
   }
